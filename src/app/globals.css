@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000;
+  }
+
+  body {
+    background-color: #000;
+    color: #fafafa;
+  }
+
+  ::selection {
+    background-color: #1d4ed8;
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 2px; }
+}
+
+@layer components {
+  /* Typography */
+  .section-label {
+    @apply text-[10px] font-bold tracking-[0.25em] uppercase text-zinc-500;
+  }
+
+  .heading-display {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tightest leading-[0.9] text-white;
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05] text-white;
+  }
+
+  .body-lead {
+    @apply text-base md:text-lg text-zinc-400 leading-relaxed;
+  }
+
+  .body-text {
+    @apply text-sm md:text-base text-zinc-500 leading-relaxed;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 bg-blue-600 text-white px-7 py-4 rounded-sm
+           font-semibold text-sm tracking-wide
+           hover:bg-blue-500 transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2.5 border border-zinc-700 text-zinc-300 px-7 py-4 rounded-sm
+           font-semibold text-sm tracking-wide
+           hover:border-zinc-500 hover:text-white transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2.5 text-zinc-400
+           font-medium text-sm tracking-wide
+           hover:text-white transition-colors duration-200 cursor-pointer;
+  }
+
+  /* Cards */
+  .card-glass {
+    @apply bg-zinc-900/50 border border-zinc-800 rounded-sm backdrop-blur-sm;
+  }
+
+  .card-dark {
+    @apply bg-zinc-900 border border-zinc-800 rounded-sm;
+  }
+
+  /* Utilities */
+  .divider {
+    @apply border-t border-zinc-800/80;
+  }
+
+  /* GSAP split-text word spans */
+  .word-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+
+  .word-span {
+    display: inline-block;
+    will-change: transform, opacity, filter;
+  }
+
+  /* Radial glow behind technical sections */
+  .glow-blue {
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(29, 78, 216, 0.07) 0%, transparent 70%);
+  }
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 3px;
+}

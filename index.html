@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Econ Fotowoltaika | Inteligentna Energia dla Świętokrzyskiego</title>
+  <meta name="description" content="Econ Poland – kompleksowe systemy fotowoltaiczne, pompy ciepła i magazyny energii z Kielc. Profesjonalne audyty, własne ekipy montażowe, gwarancja serwisu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo" id="logo-link">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">ECON <span class="logo-accent">POLAND</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#uslugi">Usługi</a></li>
+        <li><a href="#pakiety">Pakiety</a></li>
+        <li><a href="#proces">Proces</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="#kontakt" class="btn btn-sm nav-cta" id="nav-cta-btn">Bezpłatny Audyt</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img src="hero_solar.png" alt="Panele fotowoltaiczne na dachu" class="hero-img" id="hero-bg-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content reveal" id="hero-content">
+      <div class="hero-badge">🌱 Lokalna firma · Świętokrzyskie</div>
+      <h1 class="hero-title">Econ: Inteligentna Energia<br /><span class="gradient-text">dla Świętokrzyskiego</span></h1>
+      <p class="hero-sub">Kompleksowe systemy fotowoltaiczne i pompy ciepła<br />z gwarancją serwisu. Oszczędzaj mądrze.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary" id="hero-audit-btn">Zamów bezpłatny audyt</a>
+        <a href="#pakiety" class="btn btn-ghost" id="hero-packages-btn">Zobacz pakiety →</a>
+      </div>
+    </div>
+    <div class="hero-stats reveal" id="hero-stats">
+      <div class="stat">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Realizacji</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Lat doświadczenia</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Zadowolonych klientów</span>
+      </div>
+    </div>
+    <div class="scroll-hint" id="scroll-hint">
+      <span>Przewiń</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section id="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-icon">📍</span> Lokalna firma z Kielc</div>
+      <div class="trust-sep">|</div>
+      <div class="trust-item"><span class="trust-icon">🏗️</span> Ponad 500 realizacji</div>
+      <div class="trust-sep">|</div>
+      <div class="trust-item"><span class="trust-icon">👷</span> Własne ekipy montażowe</div>
+      <div class="trust-sep">|</div>
+      <div class="trust-item"><span class="trust-icon">🛡️</span> Gwarancja serwisu</div>
+      <div class="trust-sep">|</div>
+      <div class="trust-item"><span class="trust-icon">🌿</span> Dofinansowanie Czyste Powietrze</div>
+    </div>
+  </section>
+
+  <!-- SERVICES BENTO GRID -->
+  <section id="uslugi" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Nasza Oferta</div>
+        <h2 class="section-title">Wszystko czego potrzebujesz<br /><span class="gradient-text">w jednym miejscu</span></h2>
+        <p class="section-sub">Od projektu po serwis – kompleksowa opieka przez cały cykl życia instalacji.</p>
+      </div>
+      <div class="bento-grid">
+        <!-- Large card: Fotowoltaika -->
+        <div class="bento-card bento-large reveal" id="service-pv">
+          <div class="bento-img-wrap">
+            <img src="hero_solar.png" alt="Fotowoltaika" class="bento-img" />
+            <div class="bento-img-overlay"></div>
+          </div>
+          <div class="bento-content">
+            <div class="bento-icon">☀️</div>
+            <h3>Fotowoltaika</h3>
+            <p>Panele premium klasy A z monitoringiem w aplikacji. Projektujemy instalacje dopasowane do Twojego zużycia energii i konstrukcji dachu.</p>
+            <span class="bento-tag">Od 6 kWp</span>
+          </div>
+        </div>
+        <!-- Pompy ciepła -->
+        <div class="bento-card reveal" id="service-heat">
+          <div class="bento-img-wrap">
+            <img src="heat_pump.png" alt="Pompy ciepła" class="bento-img" />
+            <div class="bento-img-overlay"></div>
+          </div>
+          <div class="bento-content">
+            <div class="bento-icon">🌡️</div>
+            <h3>Pompy Ciepła</h3>
+            <p>Nowoczesne pompy powietrze-woda dla domów jednorodzinnych. Ogrzewanie + CWU z minimalnym zużyciem prądu.</p>
+            <span class="bento-tag">COP do 5.0</span>
+          </div>
+        </div>
+        <!-- Magazyny energii -->
+        <div class="bento-card reveal" id="service-storage">
+          <div class="bento-img-wrap">
+            <img src="battery_storage.png" alt="Magazyny energii" class="bento-img" />
+            <div class="bento-img-overlay"></div>
+          </div>
+          <div class="bento-content">
+            <div class="bento-icon">🔋</div>
+            <h3>Magazyny Energii</h3>
+            <p>Przechowuj nadwyżki energii na wieczór i noce. Pełna niezależność energetyczna nawet przy awarii sieci.</p>
+            <span class="bento-tag">Do 20 kWh</span>
+          </div>
+        </div>
+        <!-- Serwis -->
+        <div class="bento-card bento-accent reveal" id="service-maintenance">
+          <div class="bento-content bento-content-solo">
+            <div class="bento-icon">🛠️</div>
+            <h3>Serwis & Opieka</h3>
+            <p>Nie zostawiamy klientów po montażu. Regularne przeglądy, monitoring zdalny i szybki czas reakcji przez cały rok.</p>
+            <ul class="service-list">
+              <li>✓ Przegląd roczny</li>
+              <li>✓ Monitoring 24/7</li>
+              <li>✓ Reakcja w 48h</li>
+            </ul>
+            <span class="bento-tag">Umowy serwisowe</span>
+          </div>
+        </div>
+        <!-- Tech card -->
+        <div class="bento-card bento-tech reveal" id="service-tech">
+          <div class="bento-img-wrap">
+            <img src="inverter_tech.png" alt="Technologia" class="bento-img" />
+            <div class="bento-img-overlay"></div>
+          </div>
+          <div class="bento-content">
+            <div class="bento-icon">⚙️</div>
+            <h3>Technologia Premium</h3>
+            <p>Pracujemy wyłącznie z certyfikowanymi producentami: Fronius, SMA, Growatt, LG, Longi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="pakiety" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Pakiety</div>
+        <h2 class="section-title">Wybierz swój pakiet<br /><span class="gradient-text">energetycznej niezależności</span></h2>
+        <p class="section-sub">Każdy pakiet to kompleksowe rozwiązanie – od projektu, przez montaż, po serwis i dofinansowanie.</p>
+      </div>
+      <div class="packages-grid">
+        <!-- ECON SMART -->
+        <div class="package-card reveal" id="pkg-smart">
+          <div class="pkg-header">
+            <div class="pkg-icon">⚡</div>
+            <div class="pkg-badge">Popularny start</div>
+          </div>
+          <h3 class="pkg-name">ECON <span class="pkg-accent">SMART</span></h3>
+          <p class="pkg-tagline">Fotowoltaika + Monitoring</p>
+          <ul class="pkg-features">
+            <li><span class="check">✓</span> Instalacja PV 6–12 kWp</li>
+            <li><span class="check">✓</span> Falownik premium (Fronius/SMA)</li>
+            <li><span class="check">✓</span> Aplikacja mobilna – monitoring 24/7</li>
+            <li><span class="check">✓</span> Gwarancja 10 lat na panel</li>
+            <li><span class="check">✓</span> Pomoc w dofinansowaniu</li>
+            <li><span class="check-off">○</span> Pompa ciepła</li>
+            <li><span class="check-off">○</span> Magazyn energii</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-outline pkg-btn" id="pkg-smart-btn">Dowiedz się więcej</a>
+        </div>
+        <!-- ECON COMFORT -->
+        <div class="package-card package-featured reveal" id="pkg-comfort">
+          <div class="pkg-featured-label">Najchętniej wybierany</div>
+          <div class="pkg-header">
+            <div class="pkg-icon">🌡️</div>
+          </div>
+          <h3 class="pkg-name">ECON <span class="pkg-accent">COMFORT</span></h3>
+          <p class="pkg-tagline">PV + Pompa ciepła + Czyste Powietrze</p>
+          <ul class="pkg-features">
+            <li><span class="check">✓</span> Instalacja PV 10–15 kWp</li>
+            <li><span class="check">✓</span> Pompa ciepła powietrze-woda</li>
+            <li><span class="check">✓</span> Ogrzewanie + ciepła woda użytkowa</li>
+            <li><span class="check">✓</span> Integracja systemów w jednej aplikacji</li>
+            <li><span class="check">✓</span> Dofinansowanie Czyste Powietrze</li>
+            <li><span class="check">✓</span> Umowa serwisowa 3 lata</li>
+            <li><span class="check-off">○</span> Magazyn energii</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-primary pkg-btn" id="pkg-comfort-btn">Zamów audyt</a>
+        </div>
+        <!-- ECON PREMIUM -->
+        <div class="package-card reveal" id="pkg-premium">
+          <div class="pkg-header">
+            <div class="pkg-icon">🔋</div>
+            <div class="pkg-badge pkg-badge-amber">Pełna niezależność</div>
+          </div>
+          <h3 class="pkg-name">ECON <span class="pkg-accent-amber">PREMIUM</span></h3>
+          <p class="pkg-tagline">PV + Pompa + Magazyn energii</p>
+          <ul class="pkg-features">
+            <li><span class="check">✓</span> Instalacja PV 15–25 kWp</li>
+            <li><span class="check">✓</span> Pompa ciepła premium</li>
+            <li><span class="check">✓</span> Magazyn energii 10–20 kWh</li>
+            <li><span class="check">✓</span> Praca wyspowa – off-grid przy awarii sieci</li>
+            <li><span class="check">✓</span> Smart Home integracja</li>
+            <li><span class="check">✓</span> Priorytetowy serwis 5 lat</li>
+            <li><span class="check">✓</span> Maksymalne dofinansowanie</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-amber pkg-btn" id="pkg-premium-btn">Zamów audyt</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="proces" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Jak działamy</div>
+        <h2 class="section-title">Cztery kroki do<br /><span class="gradient-text">własnej elektrowni</span></h2>
+      </div>
+      <div class="process-track">
+        <div class="process-line"></div>
+        <div class="process-step reveal" id="step-1">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔍</div>
+          <h4>Audyt</h4>
+          <p>Bezpłatna analiza zużycia energii, dachu i możliwości dofinansowania. Wyjeżdżamy do Ciebie.</p>
+        </div>
+        <div class="process-step reveal" id="step-2">
+          <div class="step-num">02</div>
+          <div class="step-icon">📐</div>
+          <h4>Projekt</h4>
+          <p>Indywidualny projekt instalacji z doborem sprzętu i symulacją oszczędności na 25 lat.</p>
+        </div>
+        <div class="process-step reveal" id="step-3">
+          <div class="step-num">03</div>
+          <div class="step-icon">🏗️</div>
+          <h4>Montaż</h4>
+          <p>Własne ekipy montażowe. Certyfikowani elektrycy. Montaż w 1–2 dni bez chaosu.</p>
+        </div>
+        <div class="process-step reveal" id="step-4">
+          <div class="step-num">04</div>
+          <div class="step-icon">💰</div>
+          <h4>Dotacje</h4>
+          <p>Pomagamy wypełnić wniosek o dofinansowanie. Czyste Powietrze, Mój Prąd i inne programy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontakt" class="section section-dark">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-info reveal">
+          <div class="section-tag">Kontakt</div>
+          <h2 class="section-title">Zamów bezpłatny<br /><span class="gradient-text">audyt energetyczny</span></h2>
+          <p class="section-sub">Nasz specjalista odwiedzi Cię bezpłatnie, oceni potencjał instalacji i zaproponuje najlepsze rozwiązanie dla Twojego domu lub firmy.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <strong>Adres biura</strong>
+                <span>ul. Piekoszowska 363, 25-645 Kielce</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div>
+                <strong>E-mail</strong>
+                <a href="mailto:econpoland@gmail.com">econpoland@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🌍</span>
+              <div>
+                <strong>Obszar działania</strong>
+                <span>Województwo Świętokrzyskie i okolice</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal" id="contact-form-wrap">
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Imię i nazwisko</label>
+                <input type="text" id="name" name="name" placeholder="Jan Kowalski" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="+48 500 000 000" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location">Lokalizacja montażu</label>
+              <input type="text" id="location" name="location" placeholder="np. Kielce, gmina Morawica..." required />
+            </div>
+            <div class="form-group">
+              <label for="bill">Miesięczny rachunek za prąd (zł)</label>
+              <input type="number" id="bill" name="bill" placeholder="np. 350" min="0" required />
+            </div>
+            <div class="form-group">
+              <label for="package">Pakiet, który Cię interesuje</label>
+              <select id="package" name="package">
+                <option value="">-- Wybierz pakiet --</option>
+                <option value="smart">ECON SMART (Fotowoltaika)</option>
+                <option value="comfort">ECON COMFORT (PV + Pompa ciepła)</option>
+                <option value="premium">ECON PREMIUM (PV + Pompa + Magazyn)</option>
+                <option value="serwis">Serwis istniejącej instalacji</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Dodatkowe informacje (opcjonalnie)</label>
+              <textarea id="message" name="message" rows="3" placeholder="Typ dachu, moc przyłącza, pytania..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+              <span class="btn-text">Zamów bezpłatny audyt →</span>
+              <span class="btn-loading" style="display:none;">Wysyłanie...</span>
+            </button>
+            <p class="form-note">Odpowiadamy w ciągu 24h. Bez zobowiązań.</p>
+            <div class="form-success" id="form-success" style="display:none;">
+              <span>✅</span> Dziękujemy! Odezwiemy się wkrótce.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo" id="footer-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">ECON <span class="logo-accent">POLAND</span></span>
+        </a>
+        <p>Inteligentna energia dla Świętokrzyskiego.<br />Fotowoltaika · Pompy Ciepła · Magazyny Energii</p>
+      </div>
+      <div class="footer-links">
+        <h5>Usługi</h5>
+        <a href="#uslugi">Fotowoltaika</a>
+        <a href="#uslugi">Pompy Ciepła</a>
+        <a href="#uslugi">Magazyny Energii</a>
+        <a href="#uslugi">Serwis</a>
+      </div>
+      <div class="footer-links">
+        <h5>Pakiety</h5>
+        <a href="#pakiety">Econ Smart</a>
+        <a href="#pakiety">Econ Comfort</a>
+        <a href="#pakiety">Econ Premium</a>
+      </div>
+      <div class="footer-contact">
+        <h5>Kontakt</h5>
+        <p>ul. Piekoszowska 363<br />25-645 Kielce</p>
+        <a href="mailto:econpoland@gmail.com">econpoland@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Econ Fotowoltaika / Econ Poland. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
