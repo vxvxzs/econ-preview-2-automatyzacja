@@ -1,13 +1,16 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { Sun, Flame, BatteryFull, ArrowRight } from 'lucide-react'
+import { Sun, Flame, BatteryFull, ArrowRight, Star } from 'lucide-react'
 import { ST_DEFAULTS } from '@/lib/gsap-utils'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
+
+interface Props { onOpenQuiz: () => void }
 
 const solutions = [
   {
@@ -22,6 +25,10 @@ const solutions = [
       'Wsparcie w dokumentacji do operatora OSD',
     ],
     featured: false,
+    gradient: 'from-amber-50 to-orange-50',
+    badge: '',
+    iconColor: 'text-amber-600',
+    iconBg: 'bg-amber-100',
   },
   {
     id: 'pv-hp',
@@ -35,6 +42,10 @@ const solutions = [
       'Pomoc w dotacjach (Czyste Powietrze)',
     ],
     featured: true,
+    gradient: 'from-emerald-600 to-emerald-800',
+    badge: 'Najchętniej wybierany',
+    iconColor: 'text-white',
+    iconBg: 'bg-white/20',
   },
   {
     id: 'autonomy',
@@ -48,44 +59,40 @@ const solutions = [
       'Integracja Smart Home',
     ],
     featured: false,
+    gradient: 'from-sky-50 to-blue-50',
+    badge: '',
+    iconColor: 'text-sky-600',
+    iconBg: 'bg-sky-100',
   },
 ]
 
-export default function Solutions() {
+export default function Solutions({ onOpenQuiz }: Props) {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef  = useRef<HTMLDivElement>(null)
   const gridRef    = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    // Header
+    const isMobile = window.innerWidth < 768
+
+    gsap.set(headerRef.current, { autoAlpha: 1 })
     gsap.from(headerRef.current, {
-      opacity: 0,
-      y: 40,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: headerRef.current,
-        ...ST_DEFAULTS,
-      },
+      autoAlpha: 0, y: 30, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: headerRef.current, ...ST_DEFAULTS },
     })
 
-    // Cards stagger
     const cards = gridRef.current?.querySelectorAll<HTMLElement>('.solution-card')
     if (cards && cards.length) {
-      gsap.from(cards, {
-        opacity: 0,
-        y: 70,
-        scale: 0.96,
-        rotationX: 8,
-        transformPerspective: 900,
-        duration: 0.85,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: gridRef.current,
-          ...ST_DEFAULTS,
-        },
-      })
+      gsap.set(cards, { autoAlpha: 1 })
+      gsap.fromTo(cards,
+        { autoAlpha: 0, y: isMobile ? 25 : 50, scale: isMobile ? 1 : 0.97 },
+        {
+          autoAlpha: 1, y: 0, scale: 1,
+          duration: 0.7,
+          stagger: isMobile ? 0.06 : 0.12,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: gridRef.current, ...ST_DEFAULTS },
+        }
+      )
     }
   }, { scope: sectionRef })
 
@@ -93,83 +100,94 @@ export default function Solutions() {
     <section
       ref={sectionRef}
       id="systemy"
-      className="py-28 bg-zinc-950 border-t border-zinc-800/60"
+      className="py-10 md:py-28 relative overflow-hidden bg-slate-50/50"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      {/* Subtle BG decoration */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/house_solar_aerial.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          loading="lazy"
+          sizes="100vw"
+          className="object-cover opacity-[0.04]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-white/50 to-white/80" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         {/* Header */}
         <div
           ref={headerRef}
-          className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+          className="mb-10 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6"
         >
           <div>
             <p className="section-label mb-5">Nasze Rozwiązania</p>
             <h2 className="heading-section">
               Zaprojektowane i zoptymalizowane
               <br />
-              <span className="text-zinc-600">
+              <span className="text-slate-500">
                 pod kątem Twojego zapotrzebowania energetycznego.
               </span>
             </h2>
           </div>
-          <p className="body-text max-w-sm md:text-right text-zinc-600">
+          <p className="body-text max-w-sm md:text-right text-slate-500">
             Każdy projekt poprzedza bezpłatny audyt techniczny.
             Dobieramy rozwiązania do rzeczywistego zapotrzebowania — nie do katalogu.
           </p>
         </div>
 
         {/* Cards */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {solutions.map((sol) => {
             const Icon = sol.icon
             return (
               <div
                 key={sol.id}
                 id={`solution-${sol.id}`}
-                className={`solution-card relative flex flex-col p-8 md:p-10 rounded-sm border transition-none ${
+                className={`solution-card relative flex flex-col p-7 md:p-10 rounded-3xl transition-all duration-300 ${
                   sol.featured
-                    ? 'bg-zinc-900 border-blue-700/60 shadow-[0_0_80px_rgba(29,78,216,0.12)]'
-                    : 'bg-zinc-900/40 border-zinc-800'
+                    ? `bg-gradient-to-br ${sol.gradient} shadow-2xl shadow-emerald-200 scale-[1.02] z-10`
+                    : `bg-gradient-to-br ${sol.gradient} border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1`
                 }`}
-                style={{ willChange: 'transform' }}
               >
-                {sol.featured && (
-                  <>
-                    <div className="absolute -top-px left-8 right-8 h-px bg-blue-600/80" />
-                    <span className="absolute -top-3.5 left-8 text-[10px] tracking-[0.18em] uppercase text-blue-400 bg-zinc-900 px-3 py-0.5 border border-blue-800/60 rounded-sm">
-                      Najchętniej wybierany
-                    </span>
-                  </>
+                {sol.featured && sol.badge && (
+                  <span className="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-white bg-emerald-700 px-3 py-1 rounded-full shadow-sm">
+                    <Star size={9} className="fill-white" />
+                    {sol.badge}
+                  </span>
                 )}
 
-                <div className="mb-6 w-10 h-10 border border-zinc-700 rounded-sm flex items-center justify-center">
-                  <Icon size={18} className={sol.featured ? 'text-blue-400' : 'text-zinc-500'} />
+                <div className={`mb-6 w-12 h-12 ${sol.iconBg} rounded-2xl flex items-center justify-center shadow-sm`}>
+                  <Icon size={22} className={sol.iconColor} />
                 </div>
 
-                <h3 className="text-xl font-bold text-white tracking-tight mb-2">
+                <h3 className={`text-xl font-bold tracking-tight mb-2 ${sol.featured ? 'text-white' : 'text-slate-900'}`}>
                   {sol.title}
                 </h3>
-                <p className="text-sm text-zinc-600 mb-8">{sol.description}</p>
+                <p className={`text-sm mb-6 md:mb-8 ${sol.featured ? 'text-emerald-100' : 'text-slate-500'}`}>{sol.description}</p>
 
-                <ul className="space-y-3 mb-10 flex-1">
+                <ul className="space-y-3 mb-8 md:mb-10 flex-1">
                   {sol.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm text-zinc-400">
-                      <span className="mt-2 w-1 h-1 rounded-full bg-blue-600 flex-shrink-0" />
+                    <li key={f} className={`flex items-start gap-3 text-sm ${sol.featured ? 'text-white/90' : 'text-slate-600'}`}>
+                      <span className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 ${sol.featured ? 'bg-emerald-300' : 'bg-emerald-500'}`} />
                       {f}
                     </li>
                   ))}
                 </ul>
 
-                <a
-                  href="#kontakt"
-                  className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${
+                <button
+                  onClick={onOpenQuiz}
+                  className={`inline-flex items-center gap-2 text-sm font-bold transition-colors ${
                     sol.featured
-                      ? 'text-blue-400 hover:text-blue-300'
-                      : 'text-zinc-500 hover:text-zinc-200'
+                      ? 'text-white hover:text-emerald-200'
+                      : 'text-emerald-700 hover:text-emerald-600'
                   }`}
                 >
                   Zapytaj o wycenę
                   <ArrowRight size={14} />
-                </a>
+                </button>
               </div>
             )
           })}

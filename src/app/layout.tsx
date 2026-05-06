@@ -30,7 +30,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl" className={inter.variable}>
-      <body className="bg-black text-zinc-100 antialiased">{children}</body>
+      <body className="bg-white text-zinc-950 antialiased relative min-h-screen">
+        {/* Global Background Decoration — dot pattern only (cheap CSS bg, no blur repaint) */}
+        <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.28] [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] bg-[radial-gradient(#d1fae5_1px,transparent_1px)] [background-size:28px_28px]" />
+        </div>
+
+        {children}
+      </body>
     </html>
   )
 }

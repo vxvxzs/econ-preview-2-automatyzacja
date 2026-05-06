@@ -4,9 +4,9 @@
 
 /** Default ScrollTrigger settings used across all sections */
 export const ST_DEFAULTS = {
-  start: 'top 85%',
+  start: 'top 92%',
   end: 'bottom 20%',
-  toggleActions: 'play none none reverse' as const,
+  toggleActions: 'play none none none' as const,
 }
 
 /**

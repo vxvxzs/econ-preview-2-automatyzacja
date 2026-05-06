@@ -7,77 +7,80 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #000;
+    background-color: #ffffff;
+    font-size: 17px; /* +1px base → whole page scales up ~6% */
+    /* Prevent overscroll bounce from causing repaints */
+    overscroll-behavior: none;
   }
 
   body {
-    background-color: #000;
-    color: #fafafa;
+    background-color: #ffffff;
+    color: #1a1a2e;
   }
 
   ::selection {
-    background-color: #1d4ed8;
+    background-color: #16a34a;
     color: #fff;
   }
 
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: #000; }
-  ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 2px; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #f8fafc; }
+  ::-webkit-scrollbar-thumb { background: #d1fae5; border-radius: 3px; }
 }
 
 @layer components {
-  /* Typography */
+  /* ─── Typography ───────────────────────────────────────────────────────── */
   .section-label {
-    @apply text-[10px] font-bold tracking-[0.25em] uppercase text-zinc-500;
+    @apply text-[11px] font-bold tracking-[0.28em] uppercase text-emerald-700;
   }
 
   .heading-display {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tightest leading-[0.9] text-white;
+    @apply text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-tightest leading-[0.92] text-slate-900;
   }
 
   .heading-section {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05] text-white;
+    @apply text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tighter leading-[1.08] text-slate-900;
   }
 
   .body-lead {
-    @apply text-base md:text-lg text-zinc-400 leading-relaxed;
+    @apply text-lg md:text-xl text-slate-600 leading-relaxed;
   }
 
   .body-text {
-    @apply text-sm md:text-base text-zinc-500 leading-relaxed;
+    @apply text-base md:text-lg text-slate-600 leading-relaxed;
   }
 
-  /* Buttons */
+  /* ─── Buttons ──────────────────────────────────────────────────────────── */
   .btn-primary {
-    @apply inline-flex items-center gap-2.5 bg-blue-600 text-white px-7 py-4 rounded-sm
-           font-semibold text-sm tracking-wide
-           hover:bg-blue-500 transition-colors duration-200 cursor-pointer;
+    @apply inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-xl
+           font-semibold text-base tracking-wide shadow-lg shadow-emerald-200
+           hover:bg-emerald-500 hover:shadow-emerald-300 transition-all duration-200 cursor-pointer;
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2.5 border border-zinc-700 text-zinc-300 px-7 py-4 rounded-sm
-           font-semibold text-sm tracking-wide
-           hover:border-zinc-500 hover:text-white transition-colors duration-200 cursor-pointer;
+    @apply inline-flex items-center gap-2.5 border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl
+           font-semibold text-base tracking-wide bg-white
+           hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50 transition-all duration-200 cursor-pointer;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2.5 text-zinc-400
-           font-medium text-sm tracking-wide
-           hover:text-white transition-colors duration-200 cursor-pointer;
+    @apply inline-flex items-center gap-2.5 text-slate-500
+           font-medium text-base tracking-wide
+           hover:text-slate-800 transition-colors duration-200 cursor-pointer;
   }
 
-  /* Cards */
+  /* ─── Cards ────────────────────────────────────────────────────────────── */
   .card-glass {
-    @apply bg-zinc-900/50 border border-zinc-800 rounded-sm backdrop-blur-sm;
+    @apply bg-white/80 border border-slate-100 rounded-2xl backdrop-blur-sm shadow-sm shadow-slate-100;
   }
 
   .card-dark {
-    @apply bg-zinc-900 border border-zinc-800 rounded-sm;
+    @apply bg-slate-50 border border-slate-100 rounded-2xl;
   }
 
-  /* Utilities */
+  /* ─── Utilities ────────────────────────────────────────────────────────── */
   .divider {
-    @apply border-t border-zinc-800/80;
+    @apply border-t border-slate-100;
   }
 
   /* GSAP split-text word spans */
@@ -89,17 +92,71 @@
 
   .word-span {
     display: inline-block;
-    will-change: transform, opacity, filter;
+    /* will-change only applied by GSAP during animation, not statically */
   }
 
   /* Radial glow behind technical sections */
-  .glow-blue {
-    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(29, 78, 216, 0.07) 0%, transparent 70%);
+  .glow-green {
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+  }
+
+  /* ─── Quiz tiles ───────────────────────────────────────────────────────── */
+  .quiz-tile {
+    @apply relative flex flex-col items-center justify-center gap-2.5 p-5 rounded-2xl border-2 border-slate-200
+           bg-white cursor-pointer transition-all duration-200 select-none
+           hover:border-emerald-400 hover:bg-emerald-50 hover:shadow-lg hover:shadow-emerald-100
+           active:scale-[0.97];
+  }
+
+  .quiz-tile.selected {
+    @apply border-emerald-500 bg-emerald-50 shadow-lg shadow-emerald-100;
+  }
+
+  .quiz-tile.selected::after {
+    content: '✓';
+    @apply absolute top-2 right-3 text-emerald-600 font-bold text-sm;
+  }
+
+  /* ─── Range slider ─────────────────────────────────────────────────────── */
+  .slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, #059669 var(--pct, 50%), #e2e8f0 var(--pct, 50%));
+    outline: none;
+    cursor: pointer;
+  }
+
+  .slider-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #059669;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px #d1fae5, 0 2px 8px rgba(5,150,105,0.25);
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+  }
+
+  .slider-thumb::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 5px #a7f3d0, 0 2px 12px rgba(5,150,105,0.35);
+  }
+
+  .slider-thumb::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #059669;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px #d1fae5;
+    cursor: pointer;
   }
 }
 
 /* Focus visible */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #16a34a;
   outline-offset: 3px;
 }
